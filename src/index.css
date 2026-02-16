@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes meteor {
+  0% { transform: rotate(215deg) translateX(0); opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: rotate(215deg) translateX(-500px); opacity: 0; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 0.8; }
+}
+
+.animate-meteor {
+  animation: meteor 5s linear infinite;
+}
+
+.animate-twinkle {
+  /* The duration and delay will be overridden by inline styles, but this sets the base */
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.club-name-main h1, .font-special {
+  font-family: 'Bruno Ace SC', cursive;
+}
+.club-name-main p, .font-normal {
+  font-family: 'Ubuntu', sans-serif;
+}
