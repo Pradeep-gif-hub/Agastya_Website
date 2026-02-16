@@ -85,6 +85,8 @@ export default function Coordinators() {
                   src={person.image}
                   alt={person.name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 filter brightness-90 group-hover:brightness-110"
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 {/* Info Overlay (Glassmorphism effect) */}

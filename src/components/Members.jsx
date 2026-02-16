@@ -93,6 +93,8 @@ const Bubble = ({ member, dragX, dragY, setHoveredMember, sectionRef }) => {
         alt={member.name}
         className="w-full h-full object-cover pointer-events-none"
         draggable="false" 
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
     </motion.div>
