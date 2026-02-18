@@ -1,22 +1,29 @@
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Coordinators from "./components/Coordinators";
-import Members from "./components/Members";
-import heroSectionData from "./data/heroSectionData";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./components/Home";
+import AboutPage from "./components/AboutPage";
+import Dashboard from "./components/Dashboard";
+import Events from "./components/Events";
+import Projects from "./components/Projects";
+import Crew from "./components/Crew";
+import Connect from "./components/Connect";
 
 function App() {
   return (
-    <div className="bg-[#0a0f1a] min-h-screen font-normal">
-      {/* i want to add club logo at top right */}
-      <div className="absolute top-0 right-0 p-4 z-[100]">
-        <img src={heroSectionData.logo} alt="Club Logo" className="w-16 h-16" />
-      </div>
-
-      <Hero />
-      <About />
-      <Coordinators />
-      <Members />
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/events" element={<Events />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/crew" element={<Crew />} />
+        <Route path="/connect" element={<Connect />} />
+      </Routes>
+      <Footer />
+    </Router>
   );
 }
 

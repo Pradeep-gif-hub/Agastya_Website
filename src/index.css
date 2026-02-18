@@ -16,18 +16,45 @@
   50% { opacity: 0.8; }
 }
 
+@keyframes blob {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  25% {
+    transform: translate(20px, -50px) scale(1.1);
+  }
+  50% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  75% {
+    transform: translate(50px, 50px) scale(1.05);
+  }
+}
+
 .animate-meteor {
   animation: meteor 5s linear infinite;
 }
 
 .animate-twinkle {
-  /* The duration and delay will be overridden by inline styles, but this sets the base */
   animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
 
 .club-name-main h1, .font-special {
   font-family: 'Bruno Ace SC', cursive;
 }
+
 .club-name-main p, .font-normal {
   font-family: 'Ubuntu', sans-serif;
 }
