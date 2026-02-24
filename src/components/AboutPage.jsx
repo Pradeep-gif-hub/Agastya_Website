@@ -19,49 +19,14 @@ export default function AboutPage() {
           >
             About <span className="text-cyan-400">AGASTYA</span>
           </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl text-cyan-200 text-center max-w-4xl mx-auto leading-relaxed"
-          >
-            The Official Unmanned Aerial Vehicle (UAV) Club of NIT Jalandhar - 
-            Pioneering Innovation in Autonomous Drone Technology
-          </motion.p>
         </div>
       </div>
 
-      {/* Introduction Section */}
-      <div className="px-6 md:px-12 py-12">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-xl p-8 md:p-12"
-          >
-            <p className="text-gray-300 text-lg leading-relaxed mb-4">
-              Agastya is a multidisciplinary team of passionate engineers and innovators dedicated to 
-              advancing the frontiers of Unmanned Aerial Vehicle (UAV) technology. Founded with the vision 
-              to represent NIT Jalandhar at national and international drone competitions, we combine 
-              aerodynamic expertise with cutting-edge autonomous systems to create intelligent flying machines.
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Our commitment extends beyond competition—we strive to contribute to real-world applications 
-              of drone technology while fostering a culture of innovation, teamwork, and technical excellence.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+     
 
       {/* Core Values - Mission, Vision, Goals */}
       <div className="px-6 md:px-12 py-12 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-special font-bold text-center text-white mb-12">
-            Our <span className="text-cyan-400">Core Values</span>
-          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Mission */}
