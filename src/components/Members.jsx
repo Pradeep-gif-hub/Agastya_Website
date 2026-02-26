@@ -22,6 +22,7 @@ const generateHoneycombRows = (data) => {
 const Bubble = ({ member, dragX, dragY, setHoveredMember, sectionRef }) => {
   const ref = useRef(null);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const pointerDownRef = useRef({ x: 0, y: 0, time: 0 });
 
   useEffect(() => {
     const measureOffset = () => {
@@ -73,31 +74,101 @@ const Bubble = ({ member, dragX, dragY, setHoveredMember, sectionRef }) => {
     return Math.max(0.3, newScale);
   });
 
+  const handlePointerDown = (e) => {
+    e.stopPropagation();
+    pointerDownRef.current = { x: e.clientX, y: e.clientY, time: Date.now() };
+  };
+
+  const handlePointerUp = (e) => {
+    e.stopPropagation();
+    const dx = e.clientX - pointerDownRef.current.x;
+    const dy = e.clientY - pointerDownRef.current.y;
+    const timeElapsed = Date.now() - pointerDownRef.current.time;
+    const distance = Math.sqrt(dx * dx + dy * dy);
+
+    // If it was a quick tap (< 300ms) and minimal movement (< 15px), treat as click
+    if (timeElapsed < 300 && distance < 15) {
+      if (member.socials?.linkedin) {
+        console.log(`Opening LinkedIn profile for ${member.name}:`, member.socials.linkedin);
+        window.open(member.socials.linkedin, '_blank');
+      }
+    }
+  };
+
   return (
-    <motion.div
-      ref={ref}
-      style={{ scale }}
-      className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-[#131b2e] border-2 border-white/10 shadow-lg shrink-0 origin-center"
-      whileHover={{ 
-        scale: 1.6, 
-        zIndex: 50,
-        borderColor: "#fbbf24",
-        boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(251, 191, 36, 0.5)"
+    <div
+      data-bubble="true"
+      className="pointer-events-auto z-40"
+      onClick={(e) => {
+        e.stopPropagation();
+        console.log(`[Agastya-Wrapper] ✓ CLICK DETECTED on ${member.name}`, {
+          hasSocials: !!member.socials,
+          hasLinkedIn: !!member.socials?.linkedin,
+          linkedInURL: member.socials?.linkedin
+        });
+        if (member.socials?.linkedin) {
+          try {
+            const link = window.open(member.socials.linkedin, '_blank');
+            console.log(`[Agastya-Wrapper] ✓ window.open() executed`, {
+              member: member.name,
+              url: member.socials.linkedin,
+              windowRef: link ? 'SUCCESS' : 'BLOCKED'
+            });
+          } catch (error) {
+            console.error(`[Agastya-Wrapper] ✗ Error opening link:`, error);
+          }
+        } else {
+          console.warn(`[Agastya-Wrapper] ⚠ No LinkedIn URL for ${member.name}`);
+        }
       }}
-      transition={{ type: "spring", stiffness: 400, damping: 20 }}
-      onMouseEnter={() => setHoveredMember(member)}
-      onMouseLeave={() => setHoveredMember(null)}
+      onDoubleClick={(e) => {
+        e.stopPropagation();
+        console.log(`[Agastya-Wrapper] DOUBLE-CLICK on ${member.name}`);
+      }}
     >
-      <img
-        src={member.image}
-        alt={member.name}
-        className="w-full h-full object-cover pointer-events-none"
-        draggable="false" 
-        loading="lazy"
-        decoding="async"
-      />
-      <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
-    </motion.div>
+      <motion.div
+        ref={ref}
+        style={{ scale }}
+        className="relative w-20 h-20 md:w-24 md:h-24 rounded-full overflow-hidden bg-[#131b2e] border-2 border-white/10 shadow-lg shrink-0 origin-center cursor-pointer pointer-events-auto"
+        whileHover={{ 
+          scale: 1.6, 
+          zIndex: 50,
+          borderColor: "#fbbf24",
+          boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 20px rgba(251, 191, 36, 0.5)"
+        }}
+        transition={{ type: "spring", stiffness: 400, damping: 20 }}
+        onMouseEnter={() => setHoveredMember(member)}
+        onMouseLeave={() => setHoveredMember(null)}
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onClick={(e) => {
+          e.stopPropagation();
+          console.log(`[Agastya-Motion] ✓ MOTION.DIV CLICK on ${member.name}`);
+          if (member.socials?.linkedin) {
+            try {
+              const link = window.open(member.socials.linkedin, '_blank');
+              console.log(`[Agastya-Motion] ✓ window.open() from motion div`, {
+                member: member.name,
+                url: member.socials.linkedin,
+                windowRef: link ? 'OPENED' : 'POPUP_BLOCKED'
+              });
+            } catch (error) {
+              console.error(`[Agastya-Motion] Error:`, error);
+            }
+          }
+        }}
+      >
+        <img
+          src={member.image}
+          alt={member.name}
+          className="w-full h-full object-cover pointer-events-none"
+          draggable="false" 
+          loading="lazy"
+          decoding="async"
+        />
+        <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors duration-300 pointer-events-none" />
+      </motion.div>
+    </div>
   );
 };
 
@@ -108,11 +179,25 @@ export default function Members() {
   // Create references for both the drag constraints and the parent section
   const constraintsRef = useRef(null);
   const sectionRef = useRef(null);
+  const dragContainerRef = useRef(null);
   
   const dragX = useMotionValue(0);
   const dragY = useMotionValue(0);
 
   const honeycombRows = useMemo(() => generateHoneycombRows(membersData), []);
+
+  // Log member data on mount
+  useEffect(() => {
+    console.log('[Agastya] Members Component Loaded', {
+      total: membersData.length,
+      withLinkedIn: membersData.filter(m => m.socials?.linkedin).length,
+      sample: membersData.slice(0, 3).map(m => ({
+        name: m.name,
+        hasLinkedIn: !!m.socials?.linkedin,
+        linkedin: m.socials?.linkedin?.substring(0, 50) + '...'
+      }))
+    });
+  }, []);
 
   return (
     <section 
@@ -165,12 +250,13 @@ export default function Members() {
           }}
         >
           <motion.div
+            ref={dragContainerRef}
             drag
             style={{ x: dragX, y: dragY }}
             dragConstraints={constraintsRef}
             dragElastic={0.4} 
             dragTransition={{ bounceStiffness: 150, bounceDamping: 20 }}
-            className="py-[20rem] px-[30rem] cursor-grab active:cursor-grabbing flex flex-col items-center justify-center pointer-events-auto"
+            className="py-[20rem] px-[30rem] cursor-grab active:cursor-grabbing flex flex-col items-center justify-center"
           >
             {honeycombRows.map((row, rowIndex) => (
               <div 

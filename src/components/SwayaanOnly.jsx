@@ -12,38 +12,44 @@ const SwayaanOnly = () => {
     <div className="bg-[#0a0f1a] min-h-screen w-full text-white pt-24 pb-20">
       <div className="max-w-7xl mx-auto px-4 md:px-12">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-20"
-        >
-          <h1 className="text-6xl md:text-8xl font-special font-bold text-white tracking-widest mb-4">
-            <span className="text-amber-400">SWAYAAN</span> PROJECT
-          </h1>
-          <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
-            Innovation, Excellence, and Precision in Drone Engineering
-          </p>
-        </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  className="text-center mb-20"
+>
 
-        {/* Project Description */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className="mb-16 p-8 rounded-lg bg-gradient-to-br from-amber-500/10 to-orange-600/10 border border-amber-400/30"
-        >
-          <h2 className="text-3xl font-special font-bold text-amber-400 mb-4">About Swayaan</h2>
-          <p className="text-gray-300 leading-relaxed">
-            Swayaan represents the pinnacle of autonomous drone engineering at NIT Jalandhar. 
-            Our multidisciplinary team works relentlessly to push the boundaries of what's possible 
-            in autonomous aerial systems, combining hardware innovation with cutting-edge software solutions.
-          </p>
-        </motion.div>
+  {/* Logo + Title */}
+  <div className="flex items-center justify-center gap-4 mb-4 flex-wrap">
+
+    <img
+      src="https://swayaan.meity.gov.in/static/media/Swayaan_Logo.c6be7699dc5c0be797b5.png"
+      alt="Swayaan Logo"
+      className="w-14 h-14 md:w-16 md:h-16 object-contain hover:scale-110 transition duration-300"
+    />
+
+    <a
+      href="https://swayaan.meity.gov.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-4xl md:text-6xl font-special font-bold tracking-widest
+                 text-white hover:text-amber-300 transition duration-300"
+    >
+      <span className="text-amber-400">SWAYAAN</span> PROJECT
+    </a>
+
+  </div>
+
+  {/* Subtitle */}
+  <p className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto">
+    Innovation, Excellence, and Precision in Drone Engineering
+  </p>
+
+</motion.div>
+
 
         {/* Project Gallery */}
         <div className="mb-12">
-          <h2 className="text-4xl font-special font-bold text-white mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-special font-bold text-white mb-8 text-center">
             Project <span className="text-amber-400">Gallery</span>
           </h2>
           
@@ -71,6 +77,89 @@ const SwayaanOnly = () => {
             ))}
           </div>
         </div>
+
+        {/* Project Description */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+  className="mb-20 max-w-5xl mx-auto px-6 md:px-10 py-10 rounded-2xl
+             bg-gradient-to-br from-amber-500/10 to-orange-600/10
+             border border-amber-400/30 backdrop-blur-md shadow-lg"
+>
+
+  {/* Heading + Logo */}
+  <div className="flex items-center justify-center gap-3 mb-6">
+
+    <img
+      src="https://swayaan.meity.gov.in/static/media/Swayaan_Logo.c6be7699dc5c0be797b5.png"
+      alt="Swayaan Logo"
+      className="w-10 h-10 object-contain hover:scale-110 transition"
+    />
+
+    <a
+      href="https://swayaan.meity.gov.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-3xl md:text-4xl font-special font-bold
+                 text-amber-400 tracking-wide
+                 hover:text-amber-200 transition"
+    >
+      About Swayaan
+    </a>
+
+  </div>
+
+
+  {/* Paragraph 1 */}
+  <p className="text-gray-300 text-lg leading-relaxed mb-6 text-justify">
+    <a
+      href="https://swayaan.meity.gov.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-amber-300 font-semibold hover:text-amber-200 underline decoration-amber-400/40 transition"
+    >
+      Swayaan
+    </a>{" "}
+    is an advanced autonomous agricultural drone project developed by{" "}
+    <a
+      href="/about"
+      className="text-amber-300 font-semibold hover:text-amber-200 underline decoration-amber-400/40 transition"
+    >
+      Team Aagastya
+    </a>{" "}
+    at Dr. B. R. Ambedkar National Institute of Technology (NIT) Jalandhar.
+    The system enables <span className="text-white font-medium">non-contact detection</span>
+    of essential soil nutrients — <b>Potassium (K)</b>, <b>Sodium (Na)</b>,
+    and <b>Nitrogen (N)</b> — using
+    <span className="text-white font-medium"> Near-Infrared (NIR) sensing</span>
+    mounted on an autonomous aerial platform powered by a
+    <b> Raspberry Pi onboard computer</b>, enabling real-time spectral analysis.
+  </p>
+
+
+  {/* Paragraph 2 */}
+  <p className="text-gray-300 text-lg leading-relaxed text-justify">
+    Spectral data collected in flight is transmitted to a secure
+    <span className="text-white font-medium"> cloud backend system</span>,
+    where nutrient values are processed into
+    <span className="text-white font-medium"> precision agricultural maps</span>.
+    Supported by approximately <b>₹1 lakh funding</b> under initiatives of the{" "}
+    <a
+      href="https://www.meity.gov.in/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-amber-300 font-semibold hover:text-amber-200 underline decoration-amber-400/40 transition"
+    >
+      Ministry of Electronics and Information Technology (MeitY)
+    </a>,
+    the project integrates autonomous navigation, embedded systems,
+    remote sensing, and data analytics to deliver affordable
+    precision farming for sustainable agriculture.
+  </p>
+
+</motion.div>
 
         {/* Key Highlights */}
         <motion.div

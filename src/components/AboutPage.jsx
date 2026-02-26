@@ -15,53 +15,18 @@ export default function AboutPage() {
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl md:text-8xl font-special font-bold text-white tracking-widest mb-6 text-center"
+            className="text-4xl md:text-5xl font-special font-bold text-white tracking-widest mb-6 text-center"
           >
             About <span className="text-cyan-400">AGASTYA</span>
           </motion.h1>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-xl md:text-2xl text-cyan-200 text-center max-w-4xl mx-auto leading-relaxed"
-          >
-            The Official Unmanned Aerial Vehicle (UAV) Club of NIT Jalandhar - 
-            Pioneering Innovation in Autonomous Drone Technology
-          </motion.p>
         </div>
       </div>
 
-      {/* Introduction Section */}
-      <div className="px-6 md:px-12 py-12">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-cyan-500/10 to-blue-600/10 border border-cyan-400/30 rounded-xl p-8 md:p-12"
-          >
-            <p className="text-gray-300 text-lg leading-relaxed mb-4">
-              Agastya is a multidisciplinary team of passionate engineers and innovators dedicated to 
-              advancing the frontiers of Unmanned Aerial Vehicle (UAV) technology. Founded with the vision 
-              to represent NIT Jalandhar at national and international drone competitions, we combine 
-              aerodynamic expertise with cutting-edge autonomous systems to create intelligent flying machines.
-            </p>
-            <p className="text-gray-300 text-lg leading-relaxed">
-              Our commitment extends beyond competition—we strive to contribute to real-world applications 
-              of drone technology while fostering a culture of innovation, teamwork, and technical excellence.
-            </p>
-          </motion.div>
-        </div>
-      </div>
+     
 
       {/* Core Values - Mission, Vision, Goals */}
       <div className="px-6 md:px-12 py-12 bg-gradient-to-b from-transparent via-cyan-500/5 to-transparent">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-4xl md:text-5xl font-special font-bold text-center text-white mb-12">
-            Our <span className="text-cyan-400">Core Values</span>
-          </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             {/* Mission */}
@@ -229,64 +194,6 @@ export default function AboutPage() {
               </motion.div>
             ))}
           </div>
-        </div>
-      </div>
-
-      {/* Call to Action */}
-      <div className="px-6 md:px-12 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border border-cyan-400/40 rounded-xl p-8 md:p-12"
-          >
-            <h3 className="text-3xl md:text-4xl font-special font-bold text-cyan-300 mb-4">
-              Join the Sky Revolution
-            </h3>
-            <p className="text-gray-300 text-lg leading-relaxed mb-8">
-              Whether you're passionate about aerodynamics, robotics, AI, or just the love of flight—
-              Agastya welcomes innovators from all disciplines. Together, we're redefining what's possible 
-              in autonomous aviation.
-            </p>
-            
-            {/* Social Links */}
-            <div className="flex justify-center items-center gap-6 flex-wrap">
-              <motion.a
-                href="https://www.linkedin.com/company/the-agastya/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-blue-500/30 to-blue-600/30 border border-blue-400/50 rounded-lg hover:border-blue-400 transition-all"
-              >
-                <Linkedin className="w-5 h-5 text-blue-400" />
-                <span className="text-blue-300 font-medium">LinkedIn</span>
-              </motion.a>
-              
-              <motion.a
-                href="https://www.instagram.com/agastya.club/"
-                target="_blank"
-                rel="noopener noreferrer"
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-pink-500/30 to-purple-600/30 border border-pink-400/50 rounded-lg hover:border-pink-400 transition-all"
-              >
-                <Instagram className="w-5 h-5 text-pink-400" />
-                <span className="text-pink-300 font-medium">Instagram</span>
-              </motion.a>
-              
-              <motion.a
-                href="mailto:agastya@nitj.ac.in"
-                whileHover={{ scale: 1.15 }}
-                whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-cyan-500/30 to-teal-600/30 border border-cyan-400/50 rounded-lg hover:border-cyan-400 transition-all"
-              >
-                <Mail className="w-5 h-5 text-cyan-400" />
-                <span className="text-cyan-300 font-medium">Email</span>
-              </motion.a>
-            </div>
-          </motion.div>
         </div>
       </div>
     </motion.div>

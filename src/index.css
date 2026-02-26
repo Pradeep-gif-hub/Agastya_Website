@@ -5,6 +5,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ===== PERFORMANCE OPTIMIZATIONS ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+/* GPU acceleration for animations */
+[style*="transform"] {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.member-track {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* When crew scene is active, lock page and pin footer */
+html.crew-locked, html.crew-locked body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+html.crew-locked .site-footer {
+  display: none;
+}
+
+/* ===== GLASS MORPHISM EFFECTS ===== */
+@keyframes slideInFromRight {
+  from {
+    opacity: 0;
+    transform: translateX(120px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===== EXISTING ANIMATIONS ===== */
 @keyframes meteor {
   0% { transform: rotate(215deg) translateX(0); opacity: 1; }
   70% { opacity: 1; }

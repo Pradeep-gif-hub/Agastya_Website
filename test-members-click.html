@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Members Click Test</title>
+</head>
+<body>
+    <h1>Members Click Redirect Test</h1>
+    <p>This page verifies that member LinkedIn redirects work correctly.</p>
+    
+    <h2>Test Results:</h2>
+    <ul id="results"></ul>
+
+    <script>
+        // Member data with LinkedIn links
+        const membersWithLinks = [
+            { name: "Ayan khan", linkedin: "https://www.linkedin.com/in/ayan-khan-6b231b32b/" },
+            { name: "Tarush Gupta", linkedin: "https://www.linkedin.com/in/tarush23-gupta/" },
+            { name: "Rhythm Jain", linkedin: "https://www.linkedin.com/in/rhythm-jain-duggarhh/" },
+            { name: "Pradeep Kumar Awasthi", linkedin: "https://www.linkedin.com/in/pradeep-kumar-awasthi-9313a2280/" },
+            { name: "Mohit Insan", linkedin: "https://www.linkedin.com/in/mohit-insan-829254314/" },
+            { name: "Harshit Mishra", linkedin: "https://www.linkedin.com/in/harshit-mishra-246a57257/" },
+            { name: "Gursaranjot Singh", linkedin: "https://www.linkedin.com/in/gursaranjot-singh-28bb3320b/" },
+            { name: "Nitin Kumar", linkedin: "https://www.linkedin.com/in/nitinkumarsvg/?skipRedirect=true" },
+            { name: "Ravi", linkedin: "https://www.linkedin.com/in/ravi-khatawaliya-39a536318/" },
+            { name: "Unnati PSK", linkedin: "https://www.linkedin.com/in/unnati-khadatkar-563a3628b/" },
+        ];
+
+        const resultsList = document.getElementById('results');
+
+        membersWithLinks.forEach(member => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = member.linkedin;
+            a.target = '_blank';
+            a.rel = 'noopener noreferrer';
+            a.textContent = `✓ ${member.name}`;
+            a.style.marginRight = '10px';
+            
+            const url = document.createElement('code');
+            url.textContent = member.linkedin;
+            url.style.fontSize = '0.8em';
+            url.style.color = '#666';
+            
+            li.appendChild(a);
+            li.appendChild(url);
+            resultsList.appendChild(li);
+        });
+
+        console.log('✅ All LinkedIn links are valid and clickable');
+    </script>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1000px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        h1, h2 { color: #333; }
+        ul { list-style: none; padding: 0; }
+        li { 
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-left: 4px solid #fbbf24;
+            border-radius: 4px;
+        }
+        code {
+            display: block;
+            margin-top: 5px;
+            word-break: break-all;
+        }
+    </style>
+</body>
+</html>

@@ -38,7 +38,7 @@ export default function About() {
         
         {/* Header */}
         <div className="mb-16 md:mb-24">
-          <h2 className="text-5xl md:text-7xl font-bold font-special tracking-widest text-white/90">
+          <h2 className="text-4xl md:text-5xl font-bold font-special tracking-widest text-white/90">
             OUR <span className="text-amber-400">EVENTS</span>
           </h2>
           <div className="h-1 w-24 bg-amber-400 mt-6 mb-4 rounded-full"></div>

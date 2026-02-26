@@ -9,9 +9,9 @@ export default function Navbar() {
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Events", path: "/events" },
-    { label: "Projects", path: "/projects" },
+    { label: "Current Projects", path: "/projects" },
     { label: "Crew", path: "/crew" },
-    { label: "Connect", path: "/connect" },
+    { label: "Faculty", path: "/faculty" },
   ];
 
   return (
