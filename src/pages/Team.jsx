@@ -9,7 +9,7 @@ import {
   useSpring, 
   useMotionValue
 } from "framer-motion";
-import membersData from "../data/membersData";
+import membersData, { priorityMembers } from "../data/membersData";
 import heroSectionData from "../data/heroSectionData";
 
 // --- Card Component ---
@@ -162,9 +162,10 @@ export default function Team() {
   useEffect(() => {
     const currentYear = new Date().getFullYear();
 
-    const activeMembers = membersData.filter((m) => {
-      const memberYear = m.year || 2024; 
-      return currentYear < memberYear + 4;
+    const activeMembers = priorityMembers.filter((m) => {
+      const memberYear = m.year || 2024;
+      // Include current active members (within 4 years) OR alumni before 2022
+      return currentYear < memberYear + 4 || (typeof memberYear === 'number' && memberYear < 2022);
     });
 
     const teams = activeMembers.reduce((acc, member) => {
@@ -174,7 +175,17 @@ export default function Team() {
       return acc;
     }, {});
 
-    setGroupedTeams(teams);
+    // Ensure desired display order: core -> technical -> social -> marketing
+    const ordered = {};
+    ["core", "technical", "social", "marketing"].forEach((k) => {
+      if (teams[k]) ordered[k] = teams[k];
+    });
+    // append any other teams that might exist
+    Object.keys(teams).forEach((k) => {
+      if (!ordered[k]) ordered[k] = teams[k];
+    });
+
+    setGroupedTeams(ordered);
   }, []);
 
   const teamKeys = Object.keys(groupedTeams);
