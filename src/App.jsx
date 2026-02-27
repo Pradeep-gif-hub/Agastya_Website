@@ -13,10 +13,12 @@ function App() {
   return (
     <Router>
       <div className="bg-[#0a0f1a] min-h-screen font-normal">
-        {/* club logo at top right */}
+        {/* club logo at top right (kept) */}
         <div className="absolute top-0 right-0 p-4 z-[100]">
           <img src={heroSectionData.logo} alt="Club Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
         </div>
+
+        {/* Floating Compass Navigation removed to keep only the main club logo */}
 
         <Routes>
           <Route
