@@ -18,7 +18,7 @@ export default function Coordinators() {
   };
 
   return (
-    <section className="min-h-screen py-24 text-white relative z-10 overflow-hidden" id="coordinators">
+    <section className="min-h-screen py-24 text-white relative z-10 overflow-hidden" id="visionaries-section">
       <div className="absolute inset-0 bg-[#0a0f1a] -z-30"></div>
       
       <div 

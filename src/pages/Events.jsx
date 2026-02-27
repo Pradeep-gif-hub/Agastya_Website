@@ -26,7 +26,7 @@ export default function Events() {
   return (
     <section
       className="min-h-screen bg-gradient-to-b from-[#2d4a65] via-[#1a2b45] to-[#0a0f1a] py-24 text-white relative z-10"
-      id="events"
+      id="events-section"
     >
       <div className="container mx-auto px-6 md:px-12 max-w-7xl">
         <div className="mb-12 md:mb-24">

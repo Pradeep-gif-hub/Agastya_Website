@@ -80,7 +80,7 @@ export default function DroneAnatomy() {
   const [selected, setSelected] = useState(null);
 
   return (
-    <section className="relative min-h-screen bg-[#0a0f1a] text-white flex flex-col items-center justify-center p-6 overflow-hidden font-mono">
+    <section className="relative min-h-screen bg-[#0a0f1a] text-white flex flex-col items-center justify-center p-6 overflow-hidden font-mono" id="about-section">
       <div className="absolute inset-0 opacity-10 pointer-events-none">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] sm:w-[600px] md:w-[800px] h-[400px] sm:h-[600px] md:h-[800px] border border-cyan-500/20 rounded-full" />
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] sm:w-[500px] md:w-[600px] h-[300px] sm:h-[500px] md:h-[600px] border border-cyan-500/10 rounded-full animate-[spin_20s_linear_infinite]" />
@@ -95,7 +95,7 @@ export default function DroneAnatomy() {
           filter: selected ? "blur(8px) brightness(0.3)" : "blur(0px) brightness(1)",
           scale: selected ? 1.1 : 1
         }}
-        className="relative w-full max-w-4xl aspect-video flex items-center justify-center transition-all duration-500 mt-10 sm:mt-16 md:mt-20 lg:mt-24"
+        className="relative w-full max-w-4xl flex items-center justify-center transition-all duration-500 mt-10 sm:mt-16 md:mt-20 lg:mt-24"
       >
         <img 
           src="/drone-wireframe.png" 
@@ -154,7 +154,7 @@ export default function DroneAnatomy() {
         )}
       </AnimatePresence>
 
-      <p className="absolute bottom-20 text-gray-500 text-xs tracking-[0.4em] uppercase">
+      <p className="text-gray-500 text-xs tracking-[0.4em] uppercase">
         Select component for technical breakdown
       </p>
     </section>

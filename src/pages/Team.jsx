@@ -41,7 +41,6 @@ const MemberCard = ({ member, direction }) => {
     // High performance direct DOM manipulation
     cardRef.current.style.transform = `scale(${scale})`;
     cardRef.current.style.zIndex = scale > 1.1 ? "10" : "1";
-    cardRef.current.style.filter = `brightness(${scale > 1.1 ? 1.1 : 0.85})`;
   });
 
   return (
@@ -60,31 +59,31 @@ const MemberCard = ({ member, direction }) => {
           {member.name}
         </h3>
         <div className="mt-2 flex items-center gap-2">
-          {member.socials?.linkedin ? (
+          {member.socials?.linkedin && (
             <button
               aria-label={`${member.name} LinkedIn`}
               onClick={(e) => {
                 e.stopPropagation();
                 window.open(member.socials.linkedin, "_blank", "noopener,noreferrer");
               }}
-              className="p-1 rounded-full bg-white/5 hover:bg-amber-400/90 transition-colors"
+              className="p-1 rounded-full hover:scale-125 transition-colors"
             >
-              <Linkedin size={16} className="text-white drop-shadow-sm" />
+              <Linkedin size={16} className="text-amber-400 drop-shadow-sm" />
             </button>
-          ) : null}
+          )}
 
-          {member.socials?.instagram ? (
+          {member.socials?.instagram && (
             <button
               aria-label={`${member.name} Instagram`}
               onClick={(e) => {
                 e.stopPropagation();
                 window.open(member.socials.instagram, "_blank", "noopener,noreferrer");
               }}
-              className="p-1 rounded-full bg-white/5 hover:bg-yellow-500/90 transition-colors"
+              className="p-1 rounded-full hover:scale-125 transition-colors"
             >
-              <Instagram size={16} className="text-white drop-shadow-sm" />
+              <Instagram size={16} className="text-amber-400 drop-shadow-sm" />
             </button>
-          ) : null}
+          )}
         </div>
       </div>
     </div>
@@ -219,7 +218,7 @@ export default function Team() {
     <section 
       ref={containerRef}
       className="relative w-full bg-[#0a0f1a] overflow-hidden py-16 md:py-24 z-10 flex flex-col" 
-      id="team"
+      id="crew-section"
     >
       {/* Left Fade */}
       <div className="absolute top-0 left-0 h-full w-20 md:w-40 z-30 pointer-events-none bg-gradient-to-r from-[#0a0f1a] to-transparent" />
@@ -255,7 +254,7 @@ export default function Team() {
       </div>
 
       {/* Render Strips in a Flex Column layout */}
-      <div className="flex flex-col w-full h-full justify-center gap-24">
+      <div className="flex flex-col w-full h-full justify-center gap-8 md:gap-16 lg:gap-32">
         {teamKeys.map((teamName, index) => {
           const isEven = index % 2 === 0;
           
