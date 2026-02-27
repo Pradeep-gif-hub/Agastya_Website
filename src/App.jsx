@@ -1,26 +1,19 @@
 import Hero from "./pages/Hero";
 import Events from "./pages/Events";
 import Coordinators from "./pages/Coordinators";
-import heroSectionData from "./data/heroSectionData";
 import Team from "./pages/Team";
 import Footer from "./pages/Footer";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Alumni from "./pages/Alumni";
 import DroneAnatomy from "./pages/DroneAnatomy";
 import SystemOverview from "./pages/System";
-import Navbar from "./components/navbar";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
     <Router>
       <div className="bg-[#0a0f1a] min-h-screen font-normal">
-        {/* club logo at top right (kept) */}
-        {/* <div className="absolute top-0 right-0 p-4 z-[100]">
-          <img src={heroSectionData.logo} alt="Club Logo" className="w-12 h-12 sm:w-16 sm:h-16" />
-        </div> */}
         <Navbar />
-
-        {/* Floating Compass Navigation removed to keep only the main club logo */}
 
         <Routes>
           <Route
