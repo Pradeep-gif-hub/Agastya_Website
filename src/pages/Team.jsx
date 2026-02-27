@@ -46,7 +46,7 @@ const MemberCard = ({ member, direction }) => {
   return (
     <div
       ref={cardRef}
-      className="relative flex-shrink-0 w-28 h-36 md:w-36 md:h-48 lg:w-44 lg:h-60 rounded-xl overflow-hidden border border-white/10 transition-colors duration-300 hover:border-amber-400 cursor-pointer shadow-2xl bg-[#0a0f1a] will-change-transform"
+      className="relative flex-shrink-0 w-20 h-28 sm:w-24 sm:h-32 md:w-28 md:h-36 lg:w-44 lg:h-60 rounded-xl overflow-hidden border border-white/10 transition-colors duration-300 hover:border-amber-400 cursor-pointer shadow-2xl bg-[#0a0f1a] will-change-transform"
     >
       <img
         src={member.image}
@@ -55,10 +55,10 @@ const MemberCard = ({ member, direction }) => {
         loading="lazy"
       />
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-2 md:p-3 flex flex-col justify-end h-3/5">
-        <h3 className="text-white font-bold font-special text-xs md:text-sm lg:text-base tracking-wide truncate drop-shadow-md">
+        <h3 className="text-white font-bold font-special text-[10px] sm:text-xs md:text-sm lg:text-base tracking-wide truncate drop-shadow-md">
           {member.name}
         </h3>
-        <p className="text-amber-400 text-[9px] md:text-[10px] lg:text-xs font-semibold uppercase tracking-wider truncate mt-0.5">
+        <p className="text-amber-400 text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs font-semibold uppercase tracking-wider truncate mt-0.5">
           {member.role}
         </p>
       </div>

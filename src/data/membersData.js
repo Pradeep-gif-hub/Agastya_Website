@@ -2,10 +2,10 @@ const members = [
   { id: 1, name: "Akshat Agrawal", role: "member", team: "marketing", image: "/members/Akshat Agrawal.png", socials: { linkedin: "", instagram: "" }, year:2025 },
   { id: 2, name: "Amrit Pal", role: "Gen Alpha Social Media Lead", team: "social", image: "/members/Amrit Pal.png", socials: { linkedin: "https://www.linkedin.com/in/amritpalnitj/", instagram: "https://www.instagram.com/" }, year:2024 },
   { id: 3, name: "Ankit Kumar", role: "member", team: "Public Relation", image: "/members/Ankit Kumar.png", socials: { linkedin: "", instagram: "" }, year:2025 },
-  { id: 4, name: "Ayan khan", role: "Gen Alpha Marketing Lead", team: "Marketing", image: "/members/Ayan khan.png", socials: { linkedin: "https://www.linkedin.com/in/ayan-khan-6b231b32b/", instagram: "https://www.instagram.com/" }, year:2024 },
+  { id: 4, name: "Ayan khan", role: "Sponsorship Co head", team: "Marketing", image: "/members/Ayan khan.png", socials: { linkedin: "https://www.linkedin.com/in/ayan-khan-6b231b32b/", instagram: "https://www.instagram.com/" }, year:2024 },
   { id: 6, name: "Harish Kumar", role: "member", team: "Public Relation", image: "/members/Harish Kumar.png", socials: { linkedin: "", instagram: "https://www.instagram.com/" }, year:2024 },
   { id: 7, name: "Harshit Mishra", role: "PR Head", team: "core", image: "/members/Harshit Mishra.png", socials: { linkedin: "https://www.linkedin.com/in/harshit-mishra-246a57257/", instagram: "https://www.instagram.com/" }, year:2021 },
-  { id: 8, name: "Mohit Insan", role: "Gen Alpha Technical Lead", team: "technical", image: "/members/Mohit Insan.png", socials: { linkedin: "", instagram:"https://www.instagram.com/" }, year : 2024},
+  { id: 8, name: "Mohit Insan", role: "Technical Lead 2nd Yr", team: "technical", image: "/members/Mohit Insan.png", socials: { linkedin: "", instagram:"https://www.instagram.com/" }, year : 2024},
   { id: 9, name: "Nimay Saxena", role: "member", team: "Marketing", image: "/members/Nimay Saxena.png", socials: { linkedin: "", instagram: "https://www.instagram.com/" }, year:2024 },
   { id: 10, name: "Nitin Kumar", role: "PR Head", team: "Public Relation", image: "/members/Nitin Kumar.png", socials: { linkedin: "https://www.linkedin.com/in/nitinkumarsvg/?skipRedirect=true", instagram: "https://www.instagram.com/" }, year:2023 },
   { id: 11, name: "Prabhsimran Singh", role: "Technical HEAD", team: "core", image: "/members/Prabhsimran Singh.png", socials: { linkedin: "", instagram: "https://www.instagram.com/" }, year:2021 },
@@ -31,8 +31,9 @@ const members = [
   { id: 30, name: "Pratham Namdev", role: "member", team: "social", image: "/members/Pratham Namdev.jpeg", socials: { linkedin: "https://www.linkedin.com/in/pradeep-kumar-awasthi-9313a2280/", instagram: "https://www.instagram.com/" }, year:2024},
   { id: 31, name: "Pradeep Kumar Awasthi", role: "Gen Alpha Technical Lead", team: "technical", image: "/members/Pradeep Kumar Awasthi.jpeg", socials: { linkedin: "https://www.linkedin.com/in/pradeep-kumar-awasthi-9313a2280/", instagram: "https://www.instagram.com/" }, year:2025 },
   { id: 32, name: "Naveen Yadav", role: "Gen Alpha Social Media Lead", team: "social", image: "/members/Naveen Yadav.jpeg", socials: { linkedin: "https://www.linkedin.com/in/naveenkumar5595/", instagram: "https://www.instagram.com/" }, year : 2024},
-   { id: 33, name: "Aman Kumar", role: "member", team: "technical", image: "/members/Aman Kumar.jpeg", socials: { linkedin: "https://www.linkedin.com/in/naveenkumar5595/", instagram: "https://www.instagram.com/" }, year : 2025},
- 
+  {id: 33, name: "Aman Kumar", role: "member", team: "technical", image: "/members/Aman Kumar.jpeg", socials: { linkedin: "https://www.linkedin.com/in/naveenkumar5595/", instagram: "https://www.instagram.com/" }, year : 2025},
+  {id: 34, name: "Akash Silapara Setty", role: "member", team: "core", image: "/members/Akash.jpeg", socials: { linkedin: "https://www.linkedin.com/in/akash-silapara-setty-82a7b7279?utm_source=share_via&utm_content=profile&utm_medium=member_android", instagram: "https://www.instagram.com/" }, year : 2021},
+
 ];
 
 // Priority ordering: Core -> Technical -> Social -> Marketing
