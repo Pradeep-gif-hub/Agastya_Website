@@ -135,12 +135,17 @@ export default function Hero() {
       </motion.div>
       
       {/* Pilot / Person standing on cliff - Layered at z-30 */}
-      <motion.div 
-        className="absolute bottom-[0%] right-[0%] md:right-[0%] z-[70] w-32 md:w-80"
-        style={{ y: pilotY }}
-      >
-        <img src="/pilot_.png" alt="Drone Pilot on Cliff" className="w-full h-auto" />
-      </motion.div>
+     <motion.div 
+  className="absolute bottom-0 right-0 z-[70] 
+             w-52 md:w-[420px] lg:w-[520px]"
+  style={{ y: pilotY }}
+>
+  <img 
+    src="/pilot_.png" 
+    alt="Drone Pilot on Cliff" 
+    className="w-full h-auto object-contain"
+  />
+</motion.div>
     </section>
   );
 }
