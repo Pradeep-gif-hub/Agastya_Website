@@ -9,8 +9,9 @@ import {
   useSpring, 
   useMotionValue
 } from "framer-motion";
-import membersData, { priorityMembers } from "../data/membersData";
+import priorityMembers from "../data/membersData";
 import { Linkedin, Instagram } from "lucide-react";
+import OptimizedImage from "../components/OptimizedImage";
 import heroSectionData from "../data/heroSectionData";
 
 // --- Card Component ---
@@ -20,8 +21,6 @@ const MemberCard = ({ member, direction }) => {
   useAnimationFrame(() => {
     if (!cardRef.current) return;
 
-    // getBoundingClientRect gives us the actual position on the screen, 
-    // even inside a rotated and translated container.
     const rect = cardRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
 
@@ -38,7 +37,6 @@ const MemberCard = ({ member, direction }) => {
       scale = 1 + 0.25 * (1 - distance / effectRadius);
     }
 
-    // High performance direct DOM manipulation
     cardRef.current.style.transform = `scale(${scale})`;
     cardRef.current.style.zIndex = scale > 1.1 ? "10" : "1";
   });
@@ -48,11 +46,10 @@ const MemberCard = ({ member, direction }) => {
       ref={cardRef}
       className="relative flex-shrink-0 w-20 h-28 sm:w-24 sm:h-32 md:w-28 md:h-36 lg:w-44 lg:h-60 rounded-xl overflow-hidden border border-white/10 transition-colors duration-300 hover:border-amber-400 cursor-pointer shadow-2xl bg-[#0a0f1a] will-change-transform"
     >
-      <img
+     <OptimizedImage
         src={member.image}
         alt={member.name}
         className="absolute inset-0 w-full h-full object-cover"
-        loading="lazy"
       />
       <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-2 md:p-3 flex flex-col justify-end h-3/5">
         <h3 className="text-white font-bold font-special text-[10px] sm:text-xs md:text-sm lg:text-base tracking-wide truncate drop-shadow-md">
@@ -96,18 +93,14 @@ const wrap = (min, max, v) => {
 };
 
 const Strip = ({ teamName, members, direction, rotate, scrollYProgress }) => {
-  // 1. Position State
   const baseX = useMotionValue(0);
   
-  // 2. Scroll Velocity Logic
   const scrollVelocity = useVelocity(scrollYProgress);
   const smoothVelocity = useSpring(scrollVelocity, {
     damping: 50,
     stiffness: 400
   });
 
-  // TUNE SCROLL EFFECT HERE: 
-  // Increase '40' to make scrolling have a more violent impact.
   const velocityFactor = useTransform(smoothVelocity, [0, 1], [0, 32], {
     clamp: false
   });
@@ -115,28 +108,21 @@ const Strip = ({ teamName, members, direction, rotate, scrollYProgress }) => {
 
   useAnimationFrame((t, delta) => {
     let moveBy = (direction === "right" ? 1.4 : -1.4) * (delta / 1000);
-
-    // Add the scroll momentum
     const acceleration = velocityFactor.get() * (delta / 1000);
-    
     moveBy += direction === "right" ? acceleration : -acceleration;
-
     baseX.set(baseX.get() + moveBy);
   });
 
-  // Create the 5 sets for the buffer
   const loopedMembers = [
-    ...members, // Set 1
-    ...members, // Set 2
-    ...members, // Set 3
-    ...members, // Set 4
-    ...members  // Set 5
+    ...members, 
+    ...members, 
+    ...members, 
+    ...members, 
+    ...members  
   ];
 
   return (
     <div className="relative w-full h-36 md:h-48 lg:h-60 my-10 flex items-center justify-center">
-      
-      {/* Team Label */}
       <div 
         className="absolute z-20 pointer-none"
         style={{ 
@@ -151,7 +137,6 @@ const Strip = ({ teamName, members, direction, rotate, scrollYProgress }) => {
         </h3>
       </div>
 
-      {/* The Sliding Track */}
       <div 
         className="absolute w-[500%] flex items-center justify-center" 
         style={{ transform: `rotate(${rotate}deg)` }}
@@ -184,33 +169,19 @@ export default function Team() {
   });
 
   useEffect(() => {
-    const currentYear = new Date().getFullYear();
+    // priorityMembers is already filtered and sorted from membersData.js
+    const teams = {};
 
-    const activeMembers = priorityMembers.filter((m) => {
-      const memberYear = m.year || 2024;
-      // Include current active members (within 4 years) OR alumni before 2022
-      return currentYear < memberYear + 4 || (typeof memberYear === 'number' && memberYear < 2022);
-    });
-
-    const teams = activeMembers.reduce((acc, member) => {
+    priorityMembers.forEach((member) => {
       const team = member.team.toLowerCase();
-      if (!acc[team]) acc[team] = [];
-      acc[team].push(member);
-      return acc;
-    }, {});
-
-    // Ensure desired display order: core -> technical -> social -> marketing
-    const ordered = {};
-    ["core", "technical", "social", "marketing"].forEach((k) => {
-      if (teams[k]) ordered[k] = teams[k];
-    });
-    // append any other teams that might exist
-    Object.keys(teams).forEach((k) => {
-      if (!ordered[k]) ordered[k] = teams[k];
+      if (!teams[team]) {
+        teams[team] = [];
+      }
+      teams[team].push(member);
     });
 
-    setGroupedTeams(ordered);
-  }, []);
+    setGroupedTeams(teams);
+  }, []); // Clean, simple, and relies purely on the pre-processed data
 
   const teamKeys = Object.keys(groupedTeams);
 

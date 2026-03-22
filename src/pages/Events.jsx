@@ -13,11 +13,20 @@ export default function Events() {
   }, [activeIndex]);
 
   useEffect(() => {
-    const currentImagesLength = events[activeIndex].images.length;
+    const currentImages = events[activeIndex].images;
+    const currentImagesLength = currentImages.length;
     if (currentImagesLength <= 1) return;
 
     const intervalId = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % currentImagesLength);
+      setCurrentImageIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % currentImagesLength;
+        
+        // Preload the image AFTER the next one for smooth continuous playback
+        const imageToPreload = new Image();
+        imageToPreload.src = currentImages[(nextIndex + 1) % currentImagesLength];
+        
+        return nextIndex;
+      });
     }, 3000);
 
     return () => clearInterval(intervalId);

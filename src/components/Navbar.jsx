@@ -12,7 +12,7 @@ const Navbar = () => {
     // Hide them after 3 seconds
     const timer = setTimeout(() => {
       setIsHovered(false);
-    }, 3000);
+    }, 2000);
 
     return () => clearTimeout(timer);
   }, []);

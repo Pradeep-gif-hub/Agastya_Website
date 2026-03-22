@@ -86,7 +86,13 @@ export default function Hero() {
         className="absolute left-1/2 top-[10%] md:top-[5%] z-10 w-36 md:w-56 -translate-x-1/2"
         style={{ y: moonY }}
       >
-        <img src="/moon.png" alt="Moon" className="w-full h-auto drop-shadow-[0_0_40px_rgba(200,200,255,0.4)]" />
+        <img 
+          src="/moon.png" 
+          alt="Moon" 
+          className="w-full h-auto drop-shadow-[0_0_40px_rgba(200,200,255,0.4)]" 
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync" />
       </motion.div>
 
       {/* Background Mountain */}
@@ -94,7 +100,13 @@ export default function Hero() {
         className="absolute bottom-0 left-0 right-0 z-20 w-[800px] lg:w-full md:w-[1024px]"
         style={{ y: backMountainY }}
       >
-        <img src="/mountain-bg.png" alt="Background Mountain" className="w-full h-auto object-cover" />
+        <img 
+          src="/mountain-bg.png" 
+          alt="Background Mountain" 
+          className="w-full h-auto object-cover" 
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync" />
       </motion.div>
 
 
@@ -108,6 +120,9 @@ export default function Hero() {
           src="/drone.png"
           alt="Drone"
           className="w-full h-auto drop-shadow-2xl"
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync"
           style={{ filter: "invert(1) brightness(2)" }} // Turns black image to white
           animate={{ y: [-15, 15, -15] }} // Hover up and down
           transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
@@ -132,7 +147,12 @@ export default function Hero() {
         className="absolute bottom-[-5%] left-0 right-0 z-[60] w-[812px] md:w-[1024px] lg:w-full pointer-events-none"
         style={{ y: frontMountainY }}
       >
-        <img src="/mountain-fg.png" alt="Foreground" className="w-full h-auto object-cover" />
+        <img 
+          src="/mountain-fg.png" 
+          alt="Foreground" className="w-full h-auto object-cover" 
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync" />
       </motion.div>
 
       {/* Pilot / Person standing on cliff - Layered at z-30 */}
@@ -144,7 +164,9 @@ export default function Hero() {
           src="/pilot_.png"
           alt="Drone Pilot on Cliff"
           className="w-full h-auto object-contain"
-        />
+          fetchPriority="high"
+          loading="eager"
+          decoding="sync" />
       </motion.div>
     </section>
   );

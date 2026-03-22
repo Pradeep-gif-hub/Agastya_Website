@@ -13,13 +13,13 @@ function App() {
   return (
     <Router>
       <div className="bg-[#0a0f1a] min-h-screen font-normal">
-        <Navbar />
 
         <Routes>
           <Route
             path="/"
             element={
               <>
+                <Navbar />
                 <Hero />
                 <Events />
                 <Coordinators />

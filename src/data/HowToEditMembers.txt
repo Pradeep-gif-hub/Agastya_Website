@@ -1,0 +1,88 @@
+=============================================================================
+                  THE AGASTYA WEBSITE - CONTENT MANAGEMENT GUIDE
+=============================================================================
+
+Welcome, future webmaster! 
+This website is built to be smart and easy to maintain. You do NOT need to 
+touch the complex React code to update the team. All member data is controlled 
+from a single file: `src/data/membersData.js`.
+
+Below are the instructions on how to manage the Crew.
+
+-----------------------------------------------------------------------------
+ 1. HOW TO ADD A NEW MEMBER
+-----------------------------------------------------------------------------
+Step 1: Add their photo
+- Crop the member's photo to a portrait ratio (e.g., 3:4 or square).
+- Compress the image so it loads fast (use formats like .png, .jpg, or .webp).
+- Name it clearly (e.g., "John Doe.png").
+- Place the image inside the `public/members/` folder.
+
+Step 2: Update the Data File
+- Open `src/data/membersData.js`.
+- Scroll to the `members` array.
+- Copy an existing member's line or use the template below, and paste it at 
+  the end of the list:
+
+  { 
+    id: 99, // Make sure this number is unique!
+    name: "New Member Name", 
+    team: "technical", // Options: "technical", "marketing", "social", "public relation"
+    image: "/members/New Member Name.png", 
+    socials: { 
+      linkedin: "https://linkedin.com/in/...", 
+      instagram: "https://instagram.com/..." 
+    }, 
+    year: 2025 // IMPORTANT: This must be their JOINING YEAR at NITJ
+  },
+
+Step 3: Save the file and push to github. The website will automatically update!
+
+
+-----------------------------------------------------------------------------
+ 2. HOW TO DELETE OR HIDE A MEMBER
+-----------------------------------------------------------------------------
+If someone leaves the team or you need to remove them:
+
+Method A (Recommended - Hiding):
+Simply add two slashes `//` at the very beginning of their line in 
+`membersData.js`. This comments them out, removing them from the site while 
+keeping their data saved just in case.
+Example:
+// { id: 1, name: "Akshat", team: "marketing", ... },
+
+Method B (Permanent Deletion):
+Highlight their entire line inside `membersData.js` and delete it. 
+(Optional: You can also delete their picture from the `public/members/` folder 
+to keep the repository clean).
+
+
+-----------------------------------------------------------------------------
+ 3. HOW THE AUTOMATED SYSTEM WORKS (CORE & ALUMNI)
+-----------------------------------------------------------------------------
+Do NOT manually change a member's team to "core" or "alumni". 
+The website has a built-in algorithm that calculates their seniority based on 
+the `year` property (their joining year) and the current actual year.
+
+Here is how the system automatically sorts everyone:
+
+* 1st & 2nd Year Students:
+  - Displayed only in their respective original teams (Technical, Social, etc.).
+
+* 3rd Year Students:
+  - Automatically displayed in BOTH their original team AND the Core team.
+
+* 4th Year Students:
+  - Automatically moved exclusively to the Core team (removed from their 
+    original team).
+
+* 4th Year & Above (Graduated):
+  - Automatically removed from the main Crew section.
+  - Magically transferred to the Alumni page!
+
+All you ever have to do is make sure their `year` and `team` are correct when 
+they join, and the website will handle their promotions for the rest of time!
+
+=============================================================================
+                          HAPPY CODING! - [Tarush Gupta/2026 passout]
+=============================================================================

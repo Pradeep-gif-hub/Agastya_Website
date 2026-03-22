@@ -1,7 +1,8 @@
 import { useState, useRef, useMemo, useEffect } from "react";
 import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion";
 import { Linkedin } from "lucide-react";
-import membersData from "../data/membersData";
+// Import the pre-filtered alumni data directly
+import { alumniData } from "../data/membersData"; 
 
 /* ---------------- Honeycomb Layout ---------------- */
 
@@ -86,6 +87,8 @@ const Bubble = ({ member, dragX, dragY, setHoveredMember, sectionRef, onClick })
         alt={member.name}
         className="w-full h-full object-cover pointer-events-none"
         draggable="false"
+        loading="lazy"
+        decoding="async"
       />
       <div className="absolute inset-0 bg-black/40 pointer-events-none" />
     </motion.div>
@@ -106,11 +109,7 @@ export default function Alumni() {
   const dragX = useMotionValue(0);
   const dragY = useMotionValue(0);
 
-  const alumniData = useMemo(
-    () => membersData.filter((m) => typeof m.year === "number" && m.year < 2022),
-    []
-  );
-
+  // Directly use the imported `alumniData` to filter
   const filteredAlumni = useMemo(() => {
     const nq = nameQuery.toLowerCase();
     const yq = yearQuery;
@@ -120,7 +119,7 @@ export default function Alumni() {
       if (yq && m.year !== parseInt(yq)) return false;
       return true;
     });
-  }, [alumniData, nameQuery, yearQuery]);
+  }, [nameQuery, yearQuery]);
 
   const honeycombRows = useMemo(
     () => generateHoneycombRows(filteredAlumni),
@@ -135,7 +134,7 @@ export default function Alumni() {
       {/* Header */}
       <div className="absolute top-8 left-6 z-50 pointer-events-none">
         <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold tracking-widest text-white">
-          THE <span className="text-amber-400">CREW</span>
+          OUR <span className="text-amber-400">ALUMNI</span>
         </h2>
       </div>
 
