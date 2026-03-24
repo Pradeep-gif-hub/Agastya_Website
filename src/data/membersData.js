@@ -73,7 +73,7 @@ processedMembers.sort((a, b) => {
   const posB = indexB === -1 ? 999 : indexB;
 
   return posA - posB;
-});
+});   
 
 export const alumniData = members.filter(m => currYr - m.year >= 4);
 export default processedMembers;
